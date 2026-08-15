@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepSeek Harness</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Inter, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        color: #e8eefc;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.18), transparent 35%),
+          radial-gradient(circle at 80% 10%, rgba(14, 165, 233, 0.12), transparent 28%),
+          #0b1220;
+      }
+      .card {
+        width: min(440px, calc(100vw - 40px));
+        padding: 36px 32px;
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        border-radius: 20px;
+        background: rgba(15, 23, 42, 0.72);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+        text-align: center;
+      }
+      .logo {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 18px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        font-size: 22px;
+        letter-spacing: -0.04em;
+        color: white;
+        background: linear-gradient(135deg, #2563eb, #0ea5e9);
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
+      }
+      h1 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+      }
+      p {
+        margin: 12px 0 0;
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .spinner {
+        width: 28px;
+        height: 28px;
+        margin: 24px auto 0;
+        border: 3px solid rgba(148, 163, 184, 0.25);
+        border-top-color: #38bdf8;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      .error {
+        display: none;
+        margin-top: 18px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: rgba(239, 68, 68, 0.12);
+        border: 1px solid rgba(239, 68, 68, 0.28);
+        color: #fecaca;
+        font-size: 13px;
+        text-align: left;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      body.has-error .spinner { display: none; }
+      body.has-error .error { display: block; }
+      body.has-error .status { display: none; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="logo">DSH</div>
+      <h1>DeepSeek Harness</h1>
+      <p class="status">正在启动本地服务，请稍候…</p>
+      <div class="spinner"></div>
+      <div class="error" id="error"></div>
+    </div>
+    <script>
+      const params = new URLSearchParams(location.search)
+      const error = params.get('error')
+      if (error) {
+        document.body.classList.add('has-error')
+        document.getElementById('error').textContent = error
+      }
+    </script>
+  </body>
+</html>
