@@ -1,0 +1,127 @@
+{
+  "name": "dsh-desktop",
+  "version": "1.0.0",
+  "description": "Unofficial desktop wrapper for DeepSeek Harness (Windows + macOS)",
+  "type": "module",
+  "main": "src/main.js",
+  "author": "SciGeoLight",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SciGeoLight/dsh-desktop.git"
+  },
+  "homepage": "https://scigeolight.github.io/dsh-desktop/",
+  "bugs": {
+    "url": "https://github.com/SciGeoLight/dsh-desktop/issues"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win nsis zip --x64 --publish never",
+    "dist:mac": "electron-builder --mac dmg zip --publish never",
+    "dist:mac:arm64": "electron-builder --mac dmg zip --arm64 --publish never",
+    "dist:mac:x64": "electron-builder --mac dmg zip --x64 --publish never"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.1.0-rc.6"
+  },
+  "devDependencies": {
+    "electron": "^37.10.3",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "io.github.scigeolight.dsh-desktop",
+    "productName": "DeepSeek Harness",
+    "copyright": "MIT",
+    "npmRebuild": false,
+    "nodeGypRebuild": false,
+    "buildDependenciesFromSource": false,
+    "electronDist": "node_modules/electron/dist",
+    "asar": false,
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "src/**/*",
+      "assets/icon.png",
+      "package.json",
+      "LICENSE",
+      "node_modules/**/*"
+    ],
+    "extraMetadata": {
+      "main": "src/main.js"
+    },
+    "win": {
+      "icon": "assets/icon.ico",
+      "artifactName": "DSH-Desktop-${version}-windows-${arch}.${ext}",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "DeepSeek Harness",
+      "runAfterFinish": false
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/icon.png",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "identity": null,
+      "artifactName": "DSH-Desktop-${version}-mac-${arch}.${ext}",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "title": "DeepSeek Harness ${version}",
+      "backgroundColor": "#0b1220"
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "category": "Development",
+      "executableName": "dsh-desktop",
+      "artifactName": "DSH-Desktop-${version}-linux-${arch}.${ext}",
+      "target": [
+        "AppImage"
+      ]
+    }
+  },
+  "allowScripts": {
+    "@deepseek-ai/dsh-subprocess-local@0.1.0-rc.6": true,
+    "electron@37.10.3": true,
+    "electron-winstaller@5.4.0": true,
+    "koffi@3.1.5": true,
+    "node-pty@1.1.0": true,
+    "protobufjs@7.6.5": true
+  }
+}
