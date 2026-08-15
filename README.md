@@ -19,7 +19,6 @@ Unofficial desktop wrapper for [DeepSeek Harness](https://github.com/deepseek-ai
 | --- | --- |
 | Windows x64 | NSIS installer + ZIP |
 | macOS Apple Silicon | DMG + ZIP |
-| macOS Intel | DMG + ZIP |
 
 > **iOS:** DeepSeek Harness is a Node.js local agent runtime with a Web UI. A full native iOS app is not practical in the same form. Use Windows/macOS desktop builds, or run `npx @deepseek-ai/dsh web` and open it in a mobile browser on the same network if needed.
 
