@@ -20,6 +20,7 @@ function createWindow() {
     show: false,
     backgroundColor: '#0b1220',
     title: 'DeepSeek Harness',
+    icon: path.join(__dirname, '..', 'assets', 'icon.png'),
     autoHideMenuBar: true,
     webPreferences: {
       contextIsolation: true,
