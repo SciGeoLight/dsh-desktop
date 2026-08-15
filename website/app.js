@@ -8,7 +8,6 @@ const fallbackLinks = {
   windows: `${RELEASE_PAGE}/download/DSH-Desktop-1.0.0-windows-x64.exe`,
   windowsZip: `${RELEASE_PAGE}/download/DSH-Desktop-1.0.0-windows-x64.zip`,
   'mac-arm64': `${RELEASE_PAGE}/download/DSH-Desktop-1.0.0-mac-arm64.dmg`,
-  'mac-x64': `${RELEASE_PAGE}/download/DSH-Desktop-1.0.0-mac-x64.dmg`,
 }
 
 /** @type {Record<string, string>} */
@@ -20,7 +19,6 @@ let pendingPlatform = 'windows'
 const labels = {
   windows: 'Windows x64 (.exe / .zip)',
   'mac-arm64': 'macOS Apple Silicon (.dmg)',
-  'mac-x64': 'macOS Intel (.dmg)',
 }
 
 function detectPlatform() {
@@ -28,10 +26,7 @@ function detectPlatform() {
   const platform = navigator.userAgentData?.platform || navigator.platform || ''
   const hay = `${ua} ${platform}`.toLowerCase()
   if (hay.includes('win')) return 'windows'
-  if (hay.includes('mac')) {
-    if (hay.includes('arm') || hay.includes('aarch64')) return 'mac-arm64'
-    return 'mac-arm64'
-  }
+  if (hay.includes('mac')) return 'mac-arm64'
   return 'windows'
 }
 
@@ -73,11 +68,6 @@ function matchAsset(name, platform) {
   }
   if (platform === 'mac-arm64') {
     return (n.includes('arm64') || n.includes('aarch64')) && n.endsWith('.dmg')
-  }
-  if (platform === 'mac-x64') {
-    return (n.includes('x64') || n.includes('intel') || n.includes('amd64')) &&
-      n.endsWith('.dmg') &&
-      !n.includes('arm64')
   }
   return false
 }
