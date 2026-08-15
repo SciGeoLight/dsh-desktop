@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepSeek Harness Desktop</title>
+    <meta
+      name="description"
+      content="DeepSeek Harness 非官方桌面版。一键下载 Windows / macOS 安装包，开箱即用。"
+    />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg"></div>
+    <header class="site-header">
+      <a class="brand" href="./">
+        <span class="brand-mark">DSH</span>
+        <span>DeepSeek Harness Desktop</span>
+      </a>
+      <div class="header-actions">
+        <a
+          class="github-link"
+          href="https://github.com/SciGeoLight/dsh-desktop"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Unofficial · Local-first · Open Source</p>
+          <h1>
+            DeepSeek Harness
+            <span>桌面版，一点即用</span>
+          </h1>
+          <p class="lead">
+            将官方 DeepSeek Harness（dsh）打包为可安装桌面应用。无需手动启动 CLI，
+            Windows 与 macOS 开箱即用。
+          </p>
+          <div class="hero-actions">
+            <button class="btn primary" id="download-btn" type="button">
+              立即下载
+            </button>
+            <a
+              class="btn ghost"
+              href="https://github.com/SciGeoLight/dsh-desktop"
+              target="_blank"
+              rel="noreferrer"
+              >查看源码</a
+            >
+          </div>
+          <div class="platform-row">
+            <span>Windows x64</span>
+            <span>macOS Apple Silicon</span>
+            <span>macOS Intel</span>
+          </div>
+          <p class="note">
+            说明：DeepSeek Harness 是 Node/Web 运行时，无法以完整形态提供 iOS App Store
+            版。本项目提供 Windows + macOS 桌面安装包；移动端请使用 Web / 官方 CLI。
+          </p>
+        </div>
+
+        <div class="hero-panel">
+          <div class="window">
+            <div class="window-bar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="window-body">
+              <div class="chip">Local Agent Harness</div>
+              <h2>Everything is a Plugin</h2>
+              <p>会话 · 模型 · 插件 · 工作区，完整保留官方 Web UI 能力。</p>
+              <div class="stats">
+                <div>
+                  <strong>Win</strong>
+                  <small>NSIS / ZIP</small>
+                </div>
+                <div>
+                  <strong>macOS</strong>
+                  <small>DMG / ZIP</small>
+                </div>
+                <div>
+                  <strong>MIT</strong>
+                  <small>开源免费</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="downloads" id="downloads">
+        <h2>选择平台下载</h2>
+        <div class="download-grid">
+          <button class="download-card" data-platform="windows" type="button">
+            <strong>Windows</strong>
+            <span>x64 安装包 (.exe)</span>
+          </button>
+          <button class="download-card" data-platform="mac-arm64" type="button">
+            <strong>macOS</strong>
+            <span>Apple Silicon (.dmg)</span>
+          </button>
+          <button class="download-card" data-platform="mac-x64" type="button">
+            <strong>macOS</strong>
+            <span>Intel (.dmg)</span>
+          </button>
+          <a
+            class="download-card linkish"
+            href="https://github.com/SciGeoLight/dsh-desktop/releases/latest"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <strong>全部版本</strong>
+            <span>GitHub Releases</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Unofficial community wrapper · Based on
+        <a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank" rel="noreferrer"
+          >deepseek-ai/deepseek-harness</a
+        >
+      </p>
+      <p>© 2026 SciGeoLight · MIT License</p>
+    </footer>
+
+    <div class="modal-backdrop" id="modal" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" id="modal-close" type="button" aria-label="关闭">×</button>
+        <h3 id="modal-title">准备下载</h3>
+        <p class="modal-desc">
+          下载免费。如果本项目对你有帮助，欢迎先去 GitHub 点个 Star 支持作者 ⭐
+        </p>
+        <div class="modal-actions">
+          <a
+            class="btn primary"
+            id="star-btn"
+            href="https://github.com/SciGeoLight/dsh-desktop"
+            target="_blank"
+            rel="noreferrer"
+            >支持作者（去加星）</a
+          >
+          <button class="btn ghost" id="try-btn" type="button">先体验，直接下载</button>
+        </div>
+        <p class="modal-hint" id="modal-hint">将下载：Windows 安装包</p>
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
