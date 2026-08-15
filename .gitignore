@@ -1,0 +1,14 @@
+node_modules/
+dist/
+deepseek-harness-master/
+deep-seek-harness.json
+_task_digest.txt
+.DS_Store
+*.log
+.vercel/
+.playwright-cli/
+output/
+*.exe
+!assets/*.exe
+.idea/
+.vscode/
