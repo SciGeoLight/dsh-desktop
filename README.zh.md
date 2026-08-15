@@ -19,7 +19,6 @@
 | --- | --- |
 | Windows x64 | NSIS 安装包 + ZIP |
 | macOS Apple Silicon | DMG + ZIP |
-| macOS Intel | DMG + ZIP |
 
 > **iOS：** DeepSeek Harness 是本机 Node.js Agent + Web UI，无法做成同等形态的 App Store 应用。请用 Windows/macOS 桌面版，或运行 `npx @deepseek-ai/dsh web` 后在同一网络的手机浏览器打开。
 
